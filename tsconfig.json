@@ -1,24 +1,7 @@
 {
+  "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "allowJs": true,
-    "checkJs": true,
-    "jsx": "preserve",
-    "noEmit": true,
-    "isolatedModules": true,
-    /* PAC */
     "noImplicitAny": false,
-    "typeRoots": [
-      "node_modules/@types"
-    ] /* List of folders to include type definitions from. */
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
-  /* PAC */
-  "extends": "./node_modules/pcf-scripts/tsconfig_base.json"
+    "typeRoots": ["node_modules/@types"]
+  }
 }
