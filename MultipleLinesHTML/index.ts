@@ -2,7 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 
-import MLH from "../src/jsx/multipleLinesHTML";
+//import { loadHTML } from "../src/js/store";
+import MLH, { loadHTML } from "../src/jsx/multipleLinesHTML";
 
 export class MultipleLinesHTML
   implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -38,6 +39,8 @@ export class MultipleLinesHTML
    */
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     // Add code to update control view
+    const { html } = context.parameters;
+    loadHTML(html.raw);
   }
 
   /**

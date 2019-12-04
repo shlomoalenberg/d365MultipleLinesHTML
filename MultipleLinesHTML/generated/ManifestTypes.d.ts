@@ -4,8 +4,8 @@
 
 // Define IInputs and IOutputs Type. They should match with ControlManifest.
 export interface IInputs {
-    sampleProperty: ComponentFramework.PropertyTypes.StringProperty;
+    html: ComponentFramework.PropertyTypes.StringProperty;
 }
 export interface IOutputs {
-    sampleProperty?: string;
+    html?: string;
 }

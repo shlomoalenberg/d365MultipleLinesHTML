@@ -2,7 +2,7 @@
 <manifest>
   <control namespace="d365" constructor="MultipleLinesHTML" version="0.0.1" display-name-key="MultipleLinesHTML" description-key="MultipleLinesHTML description" control-type="standard">
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="html" display-name-key="html" description-key="html" of-type="SingleLine.TextArea" usage="bound" required="true" />
     <!-- 
       Property node's of-type attribute can be of-type-group attribute. 
       Example:
