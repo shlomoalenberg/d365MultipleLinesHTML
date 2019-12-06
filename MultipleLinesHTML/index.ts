@@ -3,12 +3,13 @@ import * as ReactDOM from "react-dom";
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 
 //import { loadHTML } from "../src/js/store";
-import MLH, { loadHTML } from "../src/jsx/multipleLinesHTML";
+import MLH, { loadHTML, getHTML } from "../src/jsx/multipleLinesHTML";
 
 export class MultipleLinesHTML
   implements ComponentFramework.StandardControl<IInputs, IOutputs> {
-  // Reference to the container div
-  private theContainer: HTMLDivElement;
+  private container: HTMLDivElement;
+  private notifyOutputChanged: () => void;
+
   /**
    * Empty constructor.
    */
@@ -28,9 +29,19 @@ export class MultipleLinesHTML
     state: ComponentFramework.Dictionary,
     container: HTMLDivElement
   ) {
-    this.theContainer = container;
+    this.container = container;
+    this.notifyOutputChanged = notifyOutputChanged;
+
     // Add control initialization code
-    ReactDOM.render(React.createElement(MLH), this.theContainer);
+    ReactDOM.render(
+      // @ts-ignore
+      React.createElement(MLH, {
+        onHTMLChange: () => {
+          this.notifyOutputChanged();
+        }
+      }),
+      this.container
+    );
   }
 
   /**
@@ -48,7 +59,8 @@ export class MultipleLinesHTML
    * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
    */
   public getOutputs(): IOutputs {
-    return {};
+    // @ts-ignore
+    return { html: getHTML() };
   }
 
   /**
@@ -56,6 +68,6 @@ export class MultipleLinesHTML
    * i.e. cancelling any pending remote calls, removing listeners, etc.
    */
   public destroy(): void {
-    ReactDOM.unmountComponentAtNode(this.theContainer);
+    ReactDOM.unmountComponentAtNode(this.container);
   }
 }

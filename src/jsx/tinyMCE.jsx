@@ -29,7 +29,7 @@ import get from "lodash/get";
 
 const TinyEditor = React.forwardRef((props, ref) => {
   // @ts-ignore
-  const { disabled } = props,
+  const { disabled, onHTMLChange } = props,
     editorHeight = window.innerHeight - 80,
     fpCB = cb => {
       const input = document.createElement("input");
@@ -63,6 +63,8 @@ const TinyEditor = React.forwardRef((props, ref) => {
     <Editor
       ref={ref}
       disabled={disabled}
+      onEditorChange={onHTMLChange}
+      //onChange={onHTMLChange}
       init={{
         skin: false,
         content_css: false,

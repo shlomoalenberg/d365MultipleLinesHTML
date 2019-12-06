@@ -10,11 +10,13 @@ import TinyEditor from "./tinyMCE";
  */
 
 const tinyEditor = React.createRef(),
-  MultipleLinesHTML = () => {
+  MultipleLinesHTML = props => {
+    const { onHTMLChange } = props;
+
     return (
       <Provider store={store}>
         <Fabric>
-          <TinyEditor ref={tinyEditor} />
+          <TinyEditor ref={tinyEditor} onHTMLChange={onHTMLChange} />
         </Fabric>
       </Provider>
     );
@@ -30,6 +32,13 @@ export default MultipleLinesHTML;
  * @param {string} html
  */
 export const loadHTML = html => {
-  console.log(`loadHTML(${html})`);
   tinyEditor.current.editor.setContent(html);
+};
+
+/**
+ * @exports multiplaLinesHTML/getHTML
+ * @returns {string}
+ */
+export const getHTML = () => {
+  return tinyEditor.current.editor.getContent();
 };
