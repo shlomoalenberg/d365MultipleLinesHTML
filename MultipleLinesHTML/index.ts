@@ -58,9 +58,6 @@ export class MultipleLinesHTML
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     // Add code to update control view
     const { html } = context.parameters;
-    console.log(
-      `updateView current: ${this.currentHTML} html: ${html.raw} updatedByOutput: ${this.updatedByOutput}`
-    );
 
     if (this.updatedByOutput) {
       if (this.currentHTML === html.raw) this.updatedByOutput = false;
