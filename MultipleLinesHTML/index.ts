@@ -9,6 +9,8 @@ export class MultipleLinesHTML
   implements ComponentFramework.StandardControl<IInputs, IOutputs> {
   private container: HTMLDivElement;
   private notifyOutputChanged: () => void;
+  private currentHTML: string;
+  private updatedByOutput: boolean;
 
   /**
    * Empty constructor.
@@ -31,12 +33,17 @@ export class MultipleLinesHTML
   ) {
     this.container = container;
     this.notifyOutputChanged = notifyOutputChanged;
+    this.currentHTML = "";
+    this.updatedByOutput = false;
 
     // Add control initialization code
     ReactDOM.render(
       // @ts-ignore
       React.createElement(MLH, {
-        onHTMLChange: () => {
+        // @ts-ignore
+        onHTMLChange: (content, editor) => {
+          this.currentHTML = content;
+          this.updatedByOutput = true;
           this.notifyOutputChanged();
         }
       }),
@@ -51,6 +58,17 @@ export class MultipleLinesHTML
   public updateView(context: ComponentFramework.Context<IInputs>): void {
     // Add code to update control view
     const { html } = context.parameters;
+    console.log(
+      `updateView current: ${this.currentHTML} html: ${html.raw} updatedByOutput: ${this.updatedByOutput}`
+    );
+
+    if (this.updatedByOutput) {
+      if (this.currentHTML === html.raw) this.updatedByOutput = false;
+
+      return;
+    }
+
+    this.currentHTML = html.raw || "";
     loadHTML(html.raw);
   }
 
@@ -60,7 +78,7 @@ export class MultipleLinesHTML
    */
   public getOutputs(): IOutputs {
     // @ts-ignore
-    return { html: getHTML() };
+    return { html: this.currentHTML };
   }
 
   /**
