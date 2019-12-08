@@ -10,7 +10,7 @@ export class MultipleLinesHTML
   private container: HTMLDivElement;
   private notifyOutputChanged: () => void;
   private currentHTML: string;
-  private updatedByOutput: boolean;
+  private updatedByReact: boolean;
 
   /**
    * Empty constructor.
@@ -34,7 +34,7 @@ export class MultipleLinesHTML
     this.container = container;
     this.notifyOutputChanged = notifyOutputChanged;
     this.currentHTML = "";
-    this.updatedByOutput = false;
+    this.updatedByReact = false;
 
     // Add control initialization code
     ReactDOM.render(
@@ -43,7 +43,7 @@ export class MultipleLinesHTML
         // @ts-ignore
         onHTMLChange: (content, editor) => {
           this.currentHTML = content;
-          this.updatedByOutput = true;
+          this.updatedByReact = true;
           this.notifyOutputChanged();
         }
       }),
@@ -59,8 +59,8 @@ export class MultipleLinesHTML
     // Add code to update control view
     const { html } = context.parameters;
 
-    if (this.updatedByOutput) {
-      if (this.currentHTML === html.raw) this.updatedByOutput = false;
+    if (this.updatedByReact) {
+      if (this.currentHTML === html.raw) this.updatedByReact = false;
 
       return;
     }
