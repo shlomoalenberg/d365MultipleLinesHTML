@@ -31,7 +31,7 @@ export default MultipleLinesHTML;
  * @exports multiplaLinesHTML/loadHTML
  * @param {string} html
  */
-export const loadHTML = html => {
+export const setHTML = html => {
   tinyEditor.current.editor.setContent(html);
 };
 

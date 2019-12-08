@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { IInputs, IOutputs } from "./generated/ManifestTypes";
 
 //import { loadHTML } from "../src/js/store";
-import MLH, { loadHTML, getHTML } from "../src/jsx/multipleLinesHTML";
+import MLH, { setHTML } from "../src/jsx/multipleLinesHTML";
 
 export class MultipleLinesHTML
   implements ComponentFramework.StandardControl<IInputs, IOutputs> {
@@ -66,7 +66,7 @@ export class MultipleLinesHTML
     }
 
     this.currentHTML = html.raw || "";
-    loadHTML(html.raw);
+    setHTML(html.raw);
   }
 
   /**

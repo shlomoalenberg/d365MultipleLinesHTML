@@ -64,7 +64,6 @@ const TinyEditor = React.forwardRef((props, ref) => {
       ref={ref}
       disabled={disabled}
       onEditorChange={onHTMLChange}
-      //onChange={onHTMLChange}
       init={{
         skin: false,
         content_css: false,
