@@ -11,12 +11,16 @@ import TinyEditor from "./tinyMCE";
 
 const tinyEditor = React.createRef(),
   MultipleLinesHTML = props => {
-    const { onHTMLChange } = props;
+    const { initialValue, onHTMLChange } = props;
 
     return (
       <Provider store={store}>
         <Fabric>
-          <TinyEditor ref={tinyEditor} onHTMLChange={onHTMLChange} />
+          <TinyEditor
+            ref={tinyEditor}
+            initialValue={initialValue}
+            onHTMLChange={onHTMLChange}
+          />
         </Fabric>
       </Provider>
     );
@@ -32,7 +36,11 @@ export default MultipleLinesHTML;
  * @param {string} html
  */
 export const setHTML = html => {
-  tinyEditor.current.editor.setContent(html);
+  try {
+    tinyEditor.current.editor.setContent(html);
+  } catch (ex) {
+    console.warn(ex.message || ex);
+  }
 };
 
 /**
@@ -40,5 +48,9 @@ export const setHTML = html => {
  * @returns {string}
  */
 export const getHTML = () => {
-  return tinyEditor.current.editor.getContent();
+  try {
+    return tinyEditor.current.editor.getContent();
+  } catch (ex) {
+    console.warn(ex.message || ex);
+  }
 };

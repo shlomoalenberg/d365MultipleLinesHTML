@@ -31,9 +31,12 @@ export class MultipleLinesHTML
     state: ComponentFramework.Dictionary,
     container: HTMLDivElement
   ) {
+    const { html } = context.parameters,
+      initialValue = (html && html.raw) || "";
+
     this.container = container;
     this.notifyOutputChanged = notifyOutputChanged;
-    this.currentHTML = "";
+    this.currentHTML = initialValue;
     this.updatedByReact = false;
 
     // Add control initialization code
@@ -41,6 +44,7 @@ export class MultipleLinesHTML
       // @ts-ignore
       React.createElement(MLH, {
         // @ts-ignore
+        initialValue,
         onHTMLChange: (content, editor) => {
           this.currentHTML = content;
           this.updatedByReact = true;
