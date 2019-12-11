@@ -10,3 +10,6 @@ A pcf component that would allow editing and rendering of html in "multiple line
 5. run msbuild /t:build /restore /p:configuration=Release
 
 You can find the deploy.zip in deploy\bin\Release.
+
+**Note**
+The pcf react is still in public preview. Please use proper discretion when applying to production.
