@@ -1,9 +1,6 @@
 import React from "react";
 import "tinymce/tinymce";
 import "tinymce/themes/silver/theme";
-import "tinymce/skins/ui/oxide/skin.min.css";
-import "tinymce/skins/ui/oxide/content.min.css";
-import "tinymce/skins/content/default/content.css";
 import "tinymce/plugins/visualchars/index";
 import "tinymce/plugins/visualblocks/index";
 import "tinymce/plugins/image/index";

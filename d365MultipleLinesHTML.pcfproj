@@ -9,7 +9,7 @@
   
   <PropertyGroup>
     <Name>d365MultipleLinesHTML</Name>
-    <ProjectGuid>df55282d-c8f3-44b1-8f37-2345c21f5ef0</ProjectGuid>
+    <ProjectGuid>c45354e6-c36b-43fb-98bd-488a8298525a</ProjectGuid>
     <OutputPath>$(MSBuildThisFileDirectory)out\controls</OutputPath>
   </PropertyGroup>
 

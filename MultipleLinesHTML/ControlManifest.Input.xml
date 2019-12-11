@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
   <control namespace="d365" constructor="MultipleLinesHTML" version="0.0.1" display-name-key="MultipleLinesHTML" description-key="MultipleLinesHTML description" control-type="standard">
-    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="html" display-name-key="html" description-key="html" of-type="SingleLine.TextArea" usage="bound" required="true" />
-    <!-- 
-      Property node's of-type attribute can be of-type-group attribute. 
-      Example:
-      <type-group name="numbers">
-        <type>Whole.None</type>
-        <type>Currency</type>
-        <type>FP</type>
-        <type>Decimal</type>
+      <type-group name="MultipleLinesText">
+        <type>Multiple</type>
+        <type>SingleLine.TextArea</type>
       </type-group>
-      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
-    -->
+      <property name="html" display-name-key="html" description-key="html" of-type-group="MultipleLinesText" usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1"/>
+      <css path="../node_modules/tinymce/skins/ui/oxide/skin.min.css" order="1" />
+      <css path="../node_modules/tinymce/skins/ui/oxide/content.min.css" order="2" />
+      <css path="../node_modules/tinymce/skins/content/default/content.css" order="3" />
       <!-- UNCOMMENT TO ADD MORE RESOURCES
-      <css path="css/MultipleLinesHTML.css" order="1" />
       <resx path="strings/MultipleLinesHTML.1033.resx" version="1.0.0" />
       -->
     </resources>
